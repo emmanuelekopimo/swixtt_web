@@ -1,0 +1,50 @@
+{
+  "id": "abc",
+  "name": "Computer Science",
+  "created": "2/8/2023",
+  "modidied": "5/8/2023",
+  "username": "Emmanuel",
+  "verified": true,
+  "saturday": false,
+  "cards": [
+    {
+      "id": "123",
+      "code": "GST111",
+      "desc": "Use of English",
+      "location": "PTDF 2",
+      "color": 0,
+      "day": 2,
+      "start": [6, 30],
+      "end": [7, 0]
+    },
+    {
+      "id": "321",
+      "code": "CSC112",
+      "desc": "Computer Practical",
+      "location": "ICT 2 Hall",
+      "color": 4,
+      "day": 4,
+      "start": [9, 0],
+      "end": [12, 30]
+    },
+    {
+      "id": "345",
+      "code": "CHM111",
+      "desc": "Practical Chemistry",
+      "location": "Science Lab 2",
+      "color": 5,
+      "day": 2,
+      "start": [14, 30],
+      "end": [15, 0]
+    }
+  ],
+  "updates": [
+    {
+      "id": "xyz",
+      "type": "info",
+      "target_card_id": "345",
+      "created": "2/8/2023",
+      "content": "The class may not hold"
+    }
+  ]
+}

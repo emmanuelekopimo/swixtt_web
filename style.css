@@ -1,0 +1,150 @@
+* {
+  font-family: Roboto;
+}
+
+.main {
+  background-color: rgb(255, 255, 209);
+
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  display: grid;
+  grid-template-rows: 70px 3.5fr 50px 1fr 50px;
+}
+
+.top-bar {
+  background-color: rgb(255, 219, 171);
+  padding: 8px;
+  display: grid;
+  grid-template-columns: 120px 2px 1fr;
+}
+
+.logo-name {
+  font-size: 30pt;
+}
+
+.logo-name-text {
+  font-family: math;
+}
+
+.table-info {
+  padding: 4px;
+}
+
+.table-name {
+  font-size: 14pt;
+}
+
+.tagline {
+  font-size: 10pt;
+  color: grey;
+}
+
+hr {
+  border: 1px solid black;
+}
+
+.table-area {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+}
+
+.days-panel {
+  height: 100%;
+  background-color: orange;
+  text-align: center;
+}
+
+.scroll-area {
+  width: 98%;
+  overflow-x: scroll;
+  margin-left: 2px;
+}
+.draw-area {
+  width: 600;
+  height: 98%;
+  position: relative;
+}
+
+.space {
+  padding-left: 4px;
+}
+.start-pin {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 2px;
+  height: 100%;
+  background-color: rgb(0, 170, 14);
+  text-align: center;
+  padding-top: 8px;
+}
+
+.end-pin {
+  position: absolute;
+  top: 0px;
+  left: 1200px;
+  width: 2px;
+  height: 100%;
+  background-color: rgb(255, 0, 0);
+  text-align: center;
+  padding-top: 8px;
+}
+
+.static-pin {
+  position: absolute;
+  top: 0px;
+  width: 0.5px;
+  height: 100%;
+  background-color: rgb(148, 148, 148);
+  text-align: center;
+  padding-top: 8px;
+  padding-left: 1px;
+}
+
+.class-card {
+  position: absolute;
+  top: 17%;
+  left: 0px;
+  width: 200px;
+  height: 17%;
+  background-color: rgb(116, 116, 255);
+  box-sizing: border-box;
+  font-size: 12pt;
+  padding-left: 4px;
+}
+
+.on-going {
+  background-color: rgb(52, 168, 81);
+  padding: 6px;
+}
+
+.upcoming {
+  margin: 8px;
+  border-radius: 8px;
+  background-color: rgb(255, 164, 164);
+  padding: 10px;
+}
+
+.updates-button {
+  border-width: 0px;
+  border-radius: 10px;
+  background-color: rgb(255, 81, 0);
+  margin: 8px;
+  margin-top: 0px;
+  font-size: 14pt;
+}
+
+.text-minor {
+  font-size: 14pt;
+}
+
+.text-major {
+  font-size: 20pt;
+}
+
+.text-details {
+  font-size: 12pt;
+}
