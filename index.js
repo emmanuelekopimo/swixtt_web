@@ -19,7 +19,7 @@ fetch("./data.json")
       let end = (card.end[0] - 6) * 60 + card.end[1];
       let left = (start / 60) * 100;
       let width = (end / 60) * 100 - left;
-      let top = card.day * hRatio;
+      let top = card.day * hRatio + hRatio;
       let height = hRatio;
 
       let element = document.createElement("div");
