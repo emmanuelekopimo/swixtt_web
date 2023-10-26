@@ -1,4 +1,17 @@
 const drawArea = document.querySelector(".draw-area");
+const updatesButton = document.querySelector(".updates-button");
+const modal = document.querySelector(".modal");
+const updateBar = document.querySelector(".update-bar");
+const modalCover = document.querySelector(".modal-cover");
+const updatesArea = document.querySelector(".updates-area");
+const bubble = document.querySelector(".bubble");
+const onGoing = document.querySelector(".on-going");
+const textMinor = document.querySelector(".text-minor");
+const textMajor = document.querySelector(".text-major");
+const textDetails = document.querySelector(".text-details");
+const daysPanel = document.querySelectorAll("tbody>tr");
+
+const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
 fetch("./data.json")
   .then((res) => {
@@ -6,15 +19,47 @@ fetch("./data.json")
   })
   .then((data) => {
     // Structure the data
+    let customDateStr = "Oct 27 2023 9:38:00 ";
+    var today = new Date();
     let id = data.id;
     let name = data.name;
     let cards = data.cards;
     let updates = data.updates;
     console.log(id, name);
+    // Add time mark
+    let todayLeft =
+      (((today.getHours() - 6) * 60 + today.getMinutes()) / 60) * 100;
+    let timeElement = document.createElement("div");
+    timeElement.classList.add("time-mark");
+    timeElement.style.top = "0px";
+    timeElement.style.left = todayLeft.toString() + "px";
+    timeElement.style.width = "4px";
+    timeElement.style.height = "9px";
+    drawArea.append(timeElement);
+    // Add day mark
+    for (index = 0; index < daysPanel.length; index++) {
+      if (index > 0) {
+        if (today.getDay() == index) {
+          daysPanel[index].classList.toggle("today-day", true);
+        }
+      }
+    }
+
+    // Sort the cards according to time
+    cards.sort((bigCard, smallCard) => {
+      let bigPower = Number(
+        bigCard.day.toString() + bigCard.start[0].toString()
+      );
+      let smallPower = Number(
+        smallCard.day.toString() + smallCard.start[0].toString()
+      );
+      return bigPower - smallPower;
+    });
 
     //cards
     let hRatio = 17;
-    cards.forEach((card, index) => {
+    onGoing.innerHTML = `Dear werey, no class is ongoing. Read your books. Now wey you get time 🙂`;
+    cards.forEach((card) => {
       let start = (card.start[0] - 6) * 60 + card.start[1];
       let end = (card.end[0] - 6) * 60 + card.end[1];
       let left = (start / 60) * 100;
@@ -32,7 +77,117 @@ fetch("./data.json")
                     <br>
                     <span class="card-location">${card.location}</span> `;
 
+      // Now
+      let class_now = false;
+      if (card.day == today.getDay() - 1) {
+        let start_minute = card.start[0] * 60 + card.start[1];
+        let end_minute = card.end[0] * 60 + card.end[1];
+        let now_minute = today.getHours() * 60 + today.getMinutes();
+
+        if (now_minute > start_minute && now_minute < end_minute) {
+          // That class is going on
+          onGoing.innerHTML = `<b>Ongoing:</b> ${card.code} @ ${card.location}`;
+
+          class_now = true;
+          element.classList.toggle("now", true);
+          onGoing.classList.toggle("hide", false);
+        }
+      }
       element.innerHTML = content;
       drawArea.append(element);
     });
+
+    let nextClassNextWeek = true;
+    for (cardIndex = 0; cardIndex < cards.length; cardIndex++) {
+      let card = cards[cardIndex];
+      let start_minute = card.start[0] * 60 + card.start[1];
+      now_minute = today.getHours() * 60 + today.getMinutes();
+      if (card.day >= today.getDay() - 1) {
+        // That is the next class
+        nextClassNextWeek = false;
+        textMajor.innerText = card.code;
+        textDetails.innerText = card.location;
+        if (card.day == today.getDay() - 1) {
+          let intervalMins = start_minute - now_minute;
+          let cardDate = new Date();
+          cardDate.setHours(0, 0, 0);
+          cardDate.setMinutes(intervalMins);
+          let nextHours = cardDate.getHours();
+          let nextMinutes = cardDate.getMinutes();
+          let minuteStr = "";
+          if (nextMinutes > 0) {
+            minuteStr = `${cardDate.getMinutes()} minute${
+              nextMinutes > 1 ? "s" : ""
+            }`;
+          }
+          if (nextHours >= 1) {
+            textMinor.innerHTML = `Next lecture in <b>${nextHours} hour${
+              nextHours > 1 ? "s" : ""
+            } ${minuteStr}</b>`;
+          } else {
+            textMinor.innerHTML = `Next lecture in <b>${minuteStr}</b>`;
+          }
+        } else {
+          let day = days[card.day];
+          if (card.day - (today.getDay() - 1) == 1) {
+            textMinor.innerHTML = `First lecture <b>tomorrow</b>`;
+          } else {
+            textMinor.innerHTML = `First lecture on <b>${day}</b>`;
+          }
+        }
+        break;
+      }
+    }
+    if (nextClassNextWeek) {
+      textMajor.innerText = cards[0].code;
+      textDetails.innerText = cards[0].location;
+      textMinor.innerHTML = `First lecture <b>next week</b>`;
+      if (today.getDay() - 1 == 4) {
+        onGoing.innerHTML = `<b>Swixtt:</b><br>Enjoy your weekend`;
+      }
+    }
+    //updates
+
+    bubble.innerText = updates.length + 1;
+
+    updates.forEach((update) => {
+      let created = update.created;
+      let text = update.content;
+      let target_card_id = update.target_card_id;
+      var course_code = "";
+      var course_day = "";
+      cards.forEach((card) => {
+        if (card.id == target_card_id) {
+          course_code = card.code;
+          course_day = days[card.day];
+        }
+      });
+      let element = document.createElement("div");
+      element.classList.add("update");
+      let content = `<div class="update-title">${created}: ${course_code} • ${course_day}</div>${text}`;
+      element.innerHTML = content;
+      updatesArea.append(element);
+    });
+    let updateElement = document.createElement("div");
+    updateElement.classList.add("update");
+    updateElement.classList.add("system-update");
+    let updateContent = `<div class="update-title">${today.toLocaleDateString()}: Swixtt • Today</div>
+    All updates and information about the timetable are shown here. This time table is managed by <b>${
+      data.username
+    }</b>. Thank you for using Swixtt`;
+    updateElement.innerHTML = updateContent;
+    updatesArea.append(updateElement);
   });
+
+updatesButton.addEventListener("click", () => {
+  modal.classList.toggle("hide", false);
+  modalCover.classList.toggle("hide", false);
+});
+updateBar.addEventListener("click", () => {
+  modal.classList.toggle("hide", true);
+  modalCover.classList.toggle("hide", true);
+});
+modalCover.addEventListener("click", () => {
+  modal.classList.toggle("hide", true);
+  modalCover.classList.toggle("hide", true);
+});

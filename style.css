@@ -1,10 +1,14 @@
 * {
   font-family: Roboto;
+  color: rgb(20, 20, 20);
+}
+
+body {
+  background-color: rgb(255, 254, 178);
 }
 
 .main {
   background-color: rgb(255, 254, 178);
-
   position: absolute;
   top: 0px;
   left: 0px;
@@ -25,8 +29,9 @@
   font-size: 30pt;
 }
 
-.logo-name-text {
-  font-family: math;
+.logo-icon {
+  width: 95%;
+  margin-top: 4px;
 }
 
 .table-info {
@@ -39,11 +44,11 @@
 
 .tagline {
   font-size: 10pt;
-  color: grey;
+  color: rgb(77, 77, 77);
 }
 
 hr {
-  border: 1px solid black;
+  border: 1px solid rgb(27, 27, 27);
 }
 
 .table-area {
@@ -55,12 +60,18 @@ hr {
   height: 100%;
   background-color: rgb(255, 178, 77);
   text-align: center;
+  font-weight: bold;
+  z-index: 1000;
+}
+
+.today-day {
+  background-color: rgb(255, 139, 44);
 }
 
 .scroll-area {
-  width: 98%;
+  width: 100%;
   overflow-x: scroll;
-  margin-left: 2px;
+  overflow-y: hidden;
 }
 .draw-area {
   width: 600;
@@ -80,16 +91,14 @@ hr {
   background-color: rgb(52, 168, 81);
   text-align: center;
   padding-top: 8px;
+  margin-left: 2px;
 }
 
-.time-bar {
+.time-mark {
   position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 1200px;
-  height: 17%;
-  background-color: rgb(231, 231, 231);
-  z-index: -200;
+  background-color: rgb(255, 52, 52);
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
 
 .end-pin {
@@ -122,31 +131,57 @@ hr {
   height: 17%;
   background-color: rgb(184, 184, 184);
   box-sizing: border-box;
-  font-size: 12pt;
+  font-size: 11pt;
   padding-left: 4px;
-  border: 1px solid rgb(58, 58, 58);
+  padding-top: 2px;
+  border: 0.1px solid rgb(92, 92, 92);
+}
+
+.class-card.now {
+  border: 2px dashed rgb(52, 168, 81);
+}
+
+.card-title {
+  font-weight: bold;
 }
 
 .on-going {
   background-color: rgb(52, 168, 81);
-  padding: 6px;
+  padding-inline: 10px;
+  padding-block: 4px;
+}
+
+.on-going.hide {
+  background-color: rgb(116, 116, 116);
 }
 
 .upcoming {
   margin: 8px;
   border-radius: 8px;
-  background-color: rgb(255, 185, 138);
+  background: linear-gradient(150deg, rgb(255, 185, 138), rgb(255, 185, 138));
   padding: 10px;
 }
 
 .updates-button {
   border-width: 0px;
   border-radius: 10px;
-  background-color: rgb(255, 81, 0);
+  background-color: rgb(255, 123, 0);
   margin: 8px;
   margin-top: 0px;
   font-size: 14pt;
-  color: white;
+  color: rgb(31, 31, 31);
+  font-weight: bold;
+}
+
+.bubble {
+  background-color: rgb(31, 31, 31);
+  padding-inline: 6px;
+  padding-block: 1px;
+  border-radius: 50%;
+  color: rgb(255, 123, 0);
+  font-weight: 500;
+  margin-right: 6px;
+  font-size: 12pt;
 }
 
 .text-minor {
@@ -155,8 +190,89 @@ hr {
 
 .text-major {
   font-size: 22pt;
+  font-weight: bold;
 }
 
 .text-details {
   font-size: 10pt;
+}
+
+.modal-cover {
+  opacity: 0.1;
+  background-color: black;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  z-index: 1500;
+}
+
+.modal-cover.hide {
+  visibility: hidden;
+}
+
+.modal {
+  position: fixed;
+  left: 6px;
+  right: 6px;
+  bottom: 6px;
+  height: 300px;
+  background-color: rgb(201, 201, 201);
+  display: grid;
+  grid-template-rows: 40px 1fr;
+  border-radius: 8px;
+  z-index: 2000;
+  opacity: 1;
+  transition: all 0.3s;
+}
+
+.modal.hide {
+  opacity: 0;
+  height: 100px;
+  visibility: hidden;
+}
+
+.update-bar {
+  background-color: gray;
+  font-size: 14pt;
+  color: rgb(31, 31, 31);
+  font-weight: bold;
+  text-align: center;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  padding: 6px;
+}
+.updates-area {
+  overflow-y: scroll;
+}
+.update {
+  margin-inline: 10px;
+  margin-top: 8px;
+  border-radius: 6px;
+  background-color: rgb(255, 130, 0);
+  padding-inline: 10px;
+  padding-block: 8px;
+  font-size: 18px;
+}
+
+.update.system-update {
+  background-color: gray;
+}
+
+.update:last-child {
+  margin-bottom: 8px;
+}
+
+.update-title {
+  font-weight: bold;
+}
+
+.small-icon {
+  width: 20px;
+}
+
+.icon-button {
+  background-color: gray;
+  border-width: 0px;
 }

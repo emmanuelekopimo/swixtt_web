@@ -3,22 +3,13 @@
   "name": "Computer Science",
   "created": "2/8/2023",
   "modidied": "5/8/2023",
-  "username": "Emmanuel",
+  "username": "username",
   "verified": true,
   "saturday": false,
   "cards": [
     {
-      "id": "123",
-      "code": "GST111",
-      "desc": "Use of English",
-      "location": "Classroom for engineering room 4",
-      "color": 0,
-      "day": 0,
-      "start": [8, 0],
-      "end": [10, 0]
-    },
-    {
       "id": "321",
+      "active": true,
       "code": "PHY111",
       "desc": "Physics",
       "location": "Agric Lecture Theathre",
@@ -29,6 +20,7 @@
     },
     {
       "id": "321",
+      "active": true,
       "code": "CSC113",
       "desc": "Computer Practical",
       "location": "ICT II",
@@ -39,16 +31,18 @@
     },
     {
       "id": "321",
+      "active": true,
       "code": "PHY112",
       "desc": "Physics practical",
       "location": "PHY LAB 1",
       "color": 4,
-      "day": 4,
-      "start": [1, 0],
-      "end": [4, 0]
+      "day": 0,
+      "start": [13, 0],
+      "end": [16, 0]
     },
     {
       "id": "321",
+      "active": true,
       "code": "MTH111",
       "desc": "Math",
       "location": "ICT II",
@@ -58,7 +52,19 @@
       "end": [12, 0]
     },
     {
+      "id": "123",
+      "active": true,
+      "code": "GST111",
+      "desc": "Use of English",
+      "location": "Classroom for engineering room 4",
+      "color": 0,
+      "day": 0,
+      "start": [8, 0],
+      "end": [10, 0]
+    },
+    {
       "id": "321",
+      "active": true,
       "code": "CHM111",
       "desc": "Chemistry",
       "location": "Classroom for engineering room 6",
@@ -69,6 +75,7 @@
     },
     {
       "id": "321",
+      "active": true,
       "code": "CHM112",
       "desc": "Chemistry Practical",
       "location": "CHM LAB 1 & 2",
@@ -79,6 +86,7 @@
     },
     {
       "id": "321",
+      "active": true,
       "code": "MTH111",
       "desc": "Math",
       "location": "Geoscience room 6",
@@ -89,6 +97,7 @@
     },
     {
       "id": "321",
+      "active": true,
       "code": "PHY111",
       "desc": "Computer Practical",
       "location": "ELT",
@@ -99,6 +108,7 @@
     },
     {
       "id": "321",
+      "active": true,
       "code": "CHM111",
       "desc": "Computer Practical",
       "location": "PTDF II",
@@ -112,7 +122,7 @@
     {
       "id": "xyz",
       "type": "info",
-      "target_card_id": "345",
+      "target_card_id": "123",
       "created": "2/8/2023",
       "content": "The class may not hold"
     }
