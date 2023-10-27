@@ -19,23 +19,27 @@ fetch("./data.json")
   })
   .then((data) => {
     // Structure the data
-    let customDateStr = "Oct 27 2023 9:38:00 ";
+    let customDateStr = "Oct 26 2023 9:38:00 ";
     var today = new Date();
     let id = data.id;
     let name = data.name;
     let cards = data.cards;
     let updates = data.updates;
+    let holiday = data.holiday;
+    let holiday_type = data.holiday_type;
     console.log(id, name);
     // Add time mark
     let todayLeft =
       (((today.getHours() - 6) * 60 + today.getMinutes()) / 60) * 100;
-    let timeElement = document.createElement("div");
-    timeElement.classList.add("time-mark");
-    timeElement.style.top = "0px";
-    timeElement.style.left = todayLeft.toString() + "px";
-    timeElement.style.width = "4px";
-    timeElement.style.height = "9px";
-    drawArea.append(timeElement);
+    if (todayLeft > 0 && todayLeft < 1200) {
+      let timeElement = document.createElement("div");
+      timeElement.classList.add("time-mark");
+      timeElement.style.top = "0px";
+      timeElement.style.left = todayLeft.toString() + "px";
+      timeElement.style.width = "4px";
+      timeElement.style.height = "9px";
+      drawArea.append(timeElement);
+    }
     // Add day mark
     for (index = 0; index < daysPanel.length; index++) {
       if (index > 0) {
@@ -69,6 +73,9 @@ fetch("./data.json")
 
       let element = document.createElement("div");
       element.classList.add("class-card");
+      if (!card.active) {
+        element.classList.add("not-hold");
+      }
       element.style.top = top.toString() + "%";
       element.style.left = left.toString() + "px";
       element.style.width = width.toString() + "px";
@@ -79,7 +86,7 @@ fetch("./data.json")
 
       // Now
       let class_now = false;
-      if (card.day == today.getDay() - 1) {
+      if (card.day == today.getDay() - 1 && card.active && !holiday) {
         let start_minute = card.start[0] * 60 + card.start[1];
         let end_minute = card.end[0] * 60 + card.end[1];
         let now_minute = today.getHours() * 60 + today.getMinutes();
@@ -93,6 +100,7 @@ fetch("./data.json")
           onGoing.classList.toggle("hide", false);
         }
       }
+
       element.innerHTML = content;
       drawArea.append(element);
     });
@@ -102,45 +110,113 @@ fetch("./data.json")
       let card = cards[cardIndex];
       let start_minute = card.start[0] * 60 + card.start[1];
       now_minute = today.getHours() * 60 + today.getMinutes();
-      if (card.day >= today.getDay() - 1) {
-        // That is the next class
+      //One day or public holiday
+      if (holiday && holiday_type == "one-day") {
+        if (card.day > today.getDay() - 1 && card.active) {
+          // That is the next class
+          nextClassNextWeek = false;
+          textMajor.innerText = card.code;
+          textDetails.innerText = card.location;
+          onGoing.innerHTML = `<b>Swixtt:</b><br>Enjoy your holiday`;
+          if (card.day == today.getDay() - 1) {
+            let intervalMins = start_minute - now_minute;
+            let cardDate = new Date();
+            cardDate.setHours(0, 0, 0);
+            cardDate.setMinutes(intervalMins);
+            let nextHours = cardDate.getHours();
+            let nextMinutes = cardDate.getMinutes();
+            let minuteStr = "";
+            if (nextMinutes > 0) {
+              minuteStr = `${cardDate.getMinutes()} minute${
+                nextMinutes > 1 ? "s" : ""
+              }`;
+            }
+            if (nextHours >= 1) {
+              textMinor.innerHTML = `Next lecture in <b>${nextHours} hour${
+                nextHours > 1 ? "s" : ""
+              } ${minuteStr}</b>`;
+            } else {
+              textMinor.innerHTML = `Next lecture in <b>${minuteStr}</b>`;
+            }
+          } else {
+            let day = days[card.day];
+            if (card.day - (today.getDay() - 1) == 1) {
+              textMinor.innerHTML = `First lecture <b>tomorrow</b>`;
+            } else {
+              textMinor.innerHTML = `First lecture on <b>${day}</b>`;
+            }
+          }
+          break;
+        }
+      }
+      //Holiday is more than one week or a break or strike
+      else if (holiday && holiday_type == "break") {
         nextClassNextWeek = false;
-        textMajor.innerText = card.code;
-        textDetails.innerText = card.location;
-        if (card.day == today.getDay() - 1) {
-          let intervalMins = start_minute - now_minute;
-          let cardDate = new Date();
-          cardDate.setHours(0, 0, 0);
-          cardDate.setMinutes(intervalMins);
-          let nextHours = cardDate.getHours();
-          let nextMinutes = cardDate.getMinutes();
-          let minuteStr = "";
-          if (nextMinutes > 0) {
-            minuteStr = `${cardDate.getMinutes()} minute${
-              nextMinutes > 1 ? "s" : ""
-            }`;
-          }
-          if (nextHours >= 1) {
-            textMinor.innerHTML = `Next lecture in <b>${nextHours} hour${
-              nextHours > 1 ? "s" : ""
-            } ${minuteStr}</b>`;
-          } else {
-            textMinor.innerHTML = `Next lecture in <b>${minuteStr}</b>`;
-          }
-        } else {
-          let day = days[card.day];
-          if (card.day - (today.getDay() - 1) == 1) {
-            textMinor.innerHTML = `First lecture <b>tomorrow</b>`;
-          } else {
-            textMinor.innerHTML = `First lecture on <b>${day}</b>`;
+        let cCode = cards[0].code;
+        let cLocation = cards[0].location;
+        for (i = 0; i < cards.length; i++) {
+          let card = cards[i];
+          if (card.active) {
+            cCode = cards[i].code;
+            cLocation = cards[i].location;
+            break;
           }
         }
-        break;
+        textMajor.innerText = cCode;
+        textDetails.innerText = cLocation;
+        textMinor.innerHTML = `First lecture <b>on resumption</b>`;
+        onGoing.innerHTML = `<b>Swixtt:</b><br>Enjoy your break`;
+      } else {
+        if (card.day >= today.getDay() - 1 && card.active) {
+          // That is the next class
+          nextClassNextWeek = false;
+          textMajor.innerText = card.code;
+          textDetails.innerText = card.location;
+          if (card.day == today.getDay() - 1) {
+            let intervalMins = start_minute - now_minute;
+            let cardDate = new Date();
+            cardDate.setHours(0, 0, 0);
+            cardDate.setMinutes(intervalMins);
+            let nextHours = cardDate.getHours();
+            let nextMinutes = cardDate.getMinutes();
+            let minuteStr = "";
+            if (nextMinutes > 0) {
+              minuteStr = `${cardDate.getMinutes()} minute${
+                nextMinutes > 1 ? "s" : ""
+              }`;
+            }
+            if (nextHours >= 1) {
+              textMinor.innerHTML = `Next lecture in <b>${nextHours} hour${
+                nextHours > 1 ? "s" : ""
+              } ${minuteStr}</b>`;
+            } else {
+              textMinor.innerHTML = `Next lecture in <b>${minuteStr}</b>`;
+            }
+          } else {
+            let day = days[card.day];
+            if (card.day - (today.getDay() - 1) == 1) {
+              textMinor.innerHTML = `First lecture <b>tomorrow</b>`;
+            } else {
+              textMinor.innerHTML = `First lecture on <b>${day}</b>`;
+            }
+          }
+          break;
+        }
       }
     }
     if (nextClassNextWeek) {
-      textMajor.innerText = cards[0].code;
-      textDetails.innerText = cards[0].location;
+      let cCode = cards[0].code;
+      let cLocation = cards[0].location;
+      for (i = 0; i < cards.length; i++) {
+        let card = cards[i];
+        if (card.active) {
+          cCode = cards[i].code;
+          cLocation = cards[i].location;
+          break;
+        }
+      }
+      textMajor.innerText = cCode;
+      textDetails.innerText = cLocation;
       textMinor.innerHTML = `First lecture <b>next week</b>`;
       if (today.getDay() - 1 == 4) {
         onGoing.innerHTML = `<b>Swixtt:</b><br>Enjoy your weekend`;

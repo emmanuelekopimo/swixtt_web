@@ -129,16 +129,21 @@ hr {
   left: 0px;
   width: 200px;
   height: 17%;
-  background-color: rgb(184, 184, 184);
+  background-color: rgb(255, 139, 44);
   box-sizing: border-box;
   font-size: 11pt;
   padding-left: 4px;
   padding-top: 2px;
-  box-shadow: inset 0px 0px 0px 1px rgb(92, 92, 92);
+  border: 0.1px solid rgb(247, 58, 0);
 }
 
 .class-card.now {
-  border: 2px dashed rgb(52, 168, 81);
+  border: 2px dashed rgb(255, 238, 0);
+}
+
+.class-card.not-hold {
+  background-color: rgb(184, 184, 184);
+  border: 0.1px solid rgb(92, 92, 92);
 }
 
 .card-title {
@@ -156,7 +161,7 @@ hr {
 }
 
 .upcoming {
-  margin: 8px;
+  margin: 10px;
   border-radius: 8px;
   background: linear-gradient(150deg, rgb(255, 185, 138), rgb(255, 185, 138));
   padding: 10px;
@@ -164,9 +169,9 @@ hr {
 
 .updates-button {
   border-width: 0px;
-  border-radius: 10px;
+  border-radius: 8px;
   background-color: rgb(255, 123, 0);
-  margin: 8px;
+  margin: 10px;
   margin-top: 0px;
   font-size: 14pt;
   color: rgb(31, 31, 31);
@@ -214,9 +219,9 @@ hr {
 
 .modal {
   position: fixed;
-  left: 6px;
-  right: 6px;
-  bottom: 6px;
+  left: 9px;
+  right: 9px;
+  bottom: 8px;
   height: 300px;
   background-color: rgb(201, 201, 201);
   display: grid;
@@ -224,12 +229,12 @@ hr {
   border-radius: 8px;
   z-index: 2000;
   opacity: 1;
-  transition: all 0.3s;
+  transition: all 0.25s;
 }
 
 .modal.hide {
   opacity: 0;
-  height: 100px;
+  height: 50px;
   visibility: hidden;
 }
 

@@ -5,7 +5,8 @@
   "modidied": "5/8/2023",
   "username": "username",
   "verified": true,
-  "saturday": false,
+  "holiday": true,
+  "holiday_type": "break",
   "cards": [
     {
       "id": "321",
@@ -53,7 +54,7 @@
     },
     {
       "id": "123",
-      "active": true,
+      "active": false,
       "code": "GST111",
       "desc": "Use of English",
       "location": "Classroom for engineering room 4",
@@ -86,7 +87,7 @@
     },
     {
       "id": "321",
-      "active": true,
+      "active": false,
       "code": "MTH111",
       "desc": "Math",
       "location": "Geoscience room 6",
