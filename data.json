@@ -87,7 +87,7 @@
     },
     {
       "id": "321",
-      "active": false,
+      "active": true,
       "code": "MTH111",
       "desc": "Math",
       "location": "Geoscience room 6",
@@ -101,7 +101,7 @@
       "active": true,
       "code": "PHY111",
       "desc": "Computer Practical",
-      "location": "ELT",
+      "location": "ELTx",
       "color": 4,
       "day": 4,
       "start": [10, 0],
@@ -116,7 +116,7 @@
       "color": 4,
       "day": 4,
       "start": [12, 0],
-      "end": [1, 0]
+      "end": [13, 0]
     }
   ],
   "updates": [
