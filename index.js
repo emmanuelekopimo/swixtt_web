@@ -15,13 +15,16 @@ const daysPanel = document.querySelectorAll("tbody>tr");
 // Day is not the same as Javascript day counting
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
-fetch("./data.json")
+var urlParams = new URLSearchParams(window.location.search);
+var tableID = urlParams.get("t"); // Table ID
+
+fetch(`https://swixtt.cyclic.app/?t=${tableID}`)
   .then((res) => {
     return res.json();
   })
   .then((data) => {
     // Structure the data
-    let customDateStr = "Nov 2 2023 9:38:00 ";
+    let customDateStr = "Nov 4 2023 9:38:00 ";
     var today = new Date();
     let id = data.id;
     let name = data.name;
