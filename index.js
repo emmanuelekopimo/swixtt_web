@@ -18,7 +18,7 @@ const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 var urlParams = new URLSearchParams(window.location.search);
 var tableID = urlParams.get("t"); // Table ID
 
-fetch(`https://swixtt.cyclic.app/?t=${tableID}`)
+fetch(`https://swixtt.cyclic.app/view?t=${tableID}`)
   .then((res) => {
     return res.json();
   })
