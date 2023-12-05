@@ -65,7 +65,6 @@ button {
   border-width: 0px;
   padding-inline: 16px;
   padding-block: 9px;
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 }
 
 .small-button:hover {
