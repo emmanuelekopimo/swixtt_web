@@ -1,3 +1,29 @@
+body {
+  margin: 0px;
+}
+
+a {
+  color: rgb(255, 115, 0);
+  text-decoration: none;
+}
+
+button {
+  text-decoration: none;
+}
+.trans-cover {
+  display: none;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.trans-cover.active {
+  display: block;
+}
+
 .page {
   height: 100vh;
   width: 100%;
@@ -7,11 +33,12 @@
   width: 85%;
   max-width: 500px;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 60px;
 }
 
 .logo-image {
   width: 80%;
+  max-width: 280px;
   margin: auto;
   display: block;
 }
@@ -23,7 +50,7 @@
 }
 
 .tagline {
-  font-size: 10pt;
+  font-size: 11pt;
   color: rgb(77, 77, 77);
   text-align: center;
 }
@@ -37,5 +64,202 @@
   border-radius: 8px;
   border-width: 0px;
   padding-inline: 16px;
-  padding-block: 6px;
+  padding-block: 9px;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
+
+.small-button:hover {
+  background-color: rgb(255, 156, 74);
+}
+
+.small-button:active {
+  background-color: rgb(255, 115, 0);
+}
+
+.top-area {
+  height: 50px;
+  display: grid;
+  grid-template-columns: 1fr 50px;
+}
+
+.action-button {
+  background-color: transparent;
+  border: 0px solid;
+  border-radius: 40px;
+  transition: 0.1s;
+}
+
+.action-button:active {
+  background-color: rgba(255, 115, 0, 0.15);
+}
+
+.action-button.active {
+  background-color: rgba(255, 115, 0, 0.15);
+}
+
+.small-icon {
+  width: 4px;
+}
+
+.option-modal {
+  position: fixed;
+  width: -moz-fit-content;
+  width: fit-content;
+  right: 10px;
+  top: 40px;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  background: rgb(255, 254, 178);
+  border-radius: 6px;
+  display: block;
+}
+
+.option-modal.hide {
+  display: none;
+}
+
+.option-button {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: 0px solid;
+  font-size: 13pt;
+  padding-block: 8px;
+  padding-inline: 10px;
+  border-bottom: 0.4px solid grey;
+  text-align: left;
+}
+
+.option-button:last-child {
+  border-bottom: 0px solid;
+}
+
+.option-button:hover {
+  background: rgb(255, 171, 92, 0.3);
+}
+
+.option-button:active {
+  background: rgb(255, 171, 92, 0.5);
+}
+
+.recent-tt {
+  display: none;
+}
+
+.recent-tt.show {
+  display: block;
+  margin-top: 30px;
+  margin-bottom: 25px;
+}
+
+.tt-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  column-gap: 5px;
+  padding: 10px;
+  border: 1px solid rgb(255, 139, 44);
+  border-bottom-width: 0px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.tt-item:hover {
+  background-color: rgb(255, 254, 201);
+}
+
+.tt-item:active {
+  background-color: rgb(255, 145, 54);
+}
+
+.tt-item:nth-child(1) {
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.tt-item:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-width: 1px;
+}
+.tt-icon {
+  grid-row: span 3;
+  text-align: center;
+  font-size: 15pt;
+  font-weight: 500;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(173, 173, 173);
+  border-radius: 5px;
+}
+
+.tt-name {
+  font-size: 15pt;
+}
+
+.tt-date {
+  font-size: 10pt;
+  color: rgb(95, 95, 95);
+}
+
+.tt-icon-i {
+  align-items: center;
+  justify-content: center;
+}
+.recent-ph {
+  display: none;
+}
+
+.recent-ph.show {
+  display: block;
+}
+
+.detail-area {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border: 1px solid rgb(255, 139, 44);
+  border-radius: 10px;
+  padding-inline: 15px;
+  padding-bottom: 20px;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.caption {
+  font-size: 12pt;
+  font-weight: 400;
+}
+
+.caption.top {
+  text-wrap: nowrap;
+}
+
+.input-cover {
+  display: flex;
+  background-color: rgb(190, 190, 190);
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.email-box {
+  width: 100%;
+  border-width: 0px;
+  outline: none;
+  background-color: inherit;
+  font-size: 14pt;
+}
+
+.pass-box {
+  width: 100%;
+  border-width: 0px;
+  outline: none;
+  background-color: inherit;
+  font-size: 14pt;
+}
+
+.label {
+  margin-block: 5px;
 }

@@ -6,16 +6,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./general.css">
+    <script src="./interface.js" defer></script>
+    <script src="./index.js" defer></script>
     <title>Swixtt</title>
 </head>
 
-<body>
+<body style="overflow-y:hidden">
+    <div class="trans-cover"></div>
+    <div class="top-area">
+        <div></div>
+        <button class="action-button">
+            <img src="./res/icons/options.png" alt="Options" class="small-icon">
+        </button>
+    </div>
+    <div class="option-modal hide">
+        <button class="option-button" title="clear-recent">
+            Clear activity
+        </button>
+        <button class="option-button" title="clear-recent">
+            Feedback
+        </button>
+        <button class="option-button" title="clear-recent">
+            About Swixtt
+        </button>
+        <button class="option-button" title="clear-recent">
+            Terms of service
+        </button>
+    </div>
     <section class="page">
         <main class="content-area">
             <img src="./res/icons/swixtt.png" alt="Header Image" class="logo-image">
-            <img src="./res/images/swixtt_resource_image.png" alt="Header Image" class="header-image">
-            <p class="tagline">Your recent activity will show here</p>
-            <button class="small-button">Create time table</button>
+            <div class="recent-tt">
+                <div class="tt-item">
+                    <div class="tt-icon">
+
+                        <div class="tt-icon-i">
+                            CS
+                        </div>
+                    </div>
+                    <div class="tt-name">Computer Science</div>
+                    <div class="tt-date">Last opened: 17/1/23</div>
+                </div>
+                <div class="tt-item">
+                    <div class="tt-icon">
+
+                        <div class="tt-icon-i">
+                            SS
+                        </div>
+                    </div>
+                    <div class="tt-name">Soil Science</div>
+                    <div class="tt-date">Last opened: 17/1/23</div>
+                </div>
+                <div class="tt-item">
+                    <div class="tt-icon">
+
+                        <div class="tt-icon-i">
+                            CE
+                        </div>
+                    </div>
+                    <div class="tt-name">Computer Engineering</div>
+                    <div class="tt-date">Last opened: 17/1/23</div>
+                </div>
+                <div class="tt-item">
+                    <div class="tt-icon">
+
+                        <div class="tt-icon-i">
+                            PH
+                        </div>
+                    </div>
+                    <div class="tt-name">Pharmacy</div>
+                    <div class="tt-date">Last opened: 17/1/23</div>
+                </div>
+            </div>
+            <div class="recent-ph show">
+
+                <img src="./res/images/swixtt_resource_image.png" alt="Header Image" class="header-image">
+                <p class="tagline">Your recent activity will show here</p>
+            </div>
+            <a href="./login/index.html"><button class="small-button">Create time table</button></a>
         </main>
     </section>
 </body>

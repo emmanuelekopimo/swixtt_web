@@ -15,7 +15,7 @@ body {
   right: 0px;
   bottom: 0px;
   display: grid;
-  grid-template-rows: 70px 3.5fr 50px 1fr 50px;
+  grid-template-rows: 70px 3.6fr 47px 0.7fr 47px;
 }
 
 .top-bar {
@@ -73,6 +73,7 @@ hr {
   overflow-x: scroll;
   overflow-y: hidden;
 }
+
 .draw-area {
   width: 600px;
   height: 98%;
@@ -135,6 +136,15 @@ hr {
   padding-inline: 4px;
   padding-block: 2px;
   border: 1px solid rgb(247, 58, 0);
+}
+
+.class-card.mini {
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.class-card.mini > .card-location {
+  text-wrap: nowrap;
 }
 
 .class-card.now {
@@ -280,4 +290,12 @@ hr {
 .icon-button {
   background-color: gray;
   border-width: 0px;
+}
+
+.day-saturday {
+  display: table-row;
+}
+
+.day-saturday.hide {
+  display: none;
 }
