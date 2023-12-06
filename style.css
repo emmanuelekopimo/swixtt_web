@@ -321,7 +321,8 @@ hr {
 
 .load-gif {
   width: 40%;
+  max-width: 180px;
   display: block;
   margin: auto;
-  margin-top: 60%;
+  margin-top: 180px;
 }
