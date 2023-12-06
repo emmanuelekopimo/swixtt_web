@@ -44,4 +44,4 @@ const logIn = () => {
     });
 };
 
-smallButton.addEventListener("click", logInp);
+smallButton.addEventListener("click", logIn);
