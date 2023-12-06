@@ -36,15 +36,20 @@ body {
 
 .table-info {
   padding: 4px;
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .table-name {
   font-size: 14pt;
+  text-wrap: nowrap;
 }
 
 .tagline {
   font-size: 10pt;
   color: rgb(77, 77, 77);
+  text-wrap: nowrap;
 }
 
 hr {
@@ -180,7 +185,7 @@ hr {
 .updates-button {
   border-width: 0px;
   border-radius: 9px;
-  background-color: rgb(255, 123, 0);
+  background-color: rgb(255, 139, 44);
   margin: 10px;
   margin-top: 0px;
   font-size: 14pt;
@@ -191,9 +196,9 @@ hr {
 .bubble {
   background-color: rgb(31, 31, 31);
   padding-inline: 6px;
-  padding-block: 1px;
+  padding-block: 2px;
   border-radius: 50%;
-  color: rgb(255, 123, 0);
+  color: rgb(255, 139, 44);
   font-weight: 500;
   margin-right: 6px;
   font-size: 12pt;
@@ -298,4 +303,25 @@ hr {
 
 .day-saturday.hide {
   display: none;
+}
+
+.wait-screen {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  background-color: rgba(255, 254, 178, 0.75);
+  z-index: 2000;
+}
+
+.wait-screen.hide {
+  display: none;
+}
+
+.load-gif {
+  width: 40%;
+  display: block;
+  margin: auto;
+  margin-top: 60%;
 }

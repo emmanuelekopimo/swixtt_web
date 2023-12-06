@@ -1,0 +1,16 @@
+{
+  "type": "module",
+  "dependencies": {
+    "firebase": "^10.6.0"
+  },
+  "name": "swixtt",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

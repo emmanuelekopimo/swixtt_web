@@ -24,7 +24,7 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
      inkscape:zoom="0.79181228"
-     inkscape:cx="322.67749"
+     inkscape:cx="314.46847"
      inkscape:cy="260.79414"
      inkscape:window-width="1366"
      inkscape:window-height="745"
@@ -78,7 +78,7 @@
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <rect
-       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ff701c;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3.72423;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ff8b2c;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3.72423;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
        id="rect14"
        width="184.38715"
        height="190.70177"
@@ -110,6 +110,43 @@
        style="font-variation-settings:'wdth' 87, 'wght' 600;fill:none;stroke:#141414;stroke-width:14.568;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:38.3624;stroke-opacity:1"
        d="m 131.7124,628.0615 c 0,0 16.46217,-5.26084 24.68721,-29.04985"
        id="path14"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="swixtt.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ff8b2c;fill-opacity:0;fill-rule:evenodd;stroke:none;stroke-width:3.72423;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       id="rect1"
+       width="184.38715"
+       height="190.70177"
+       x="325.38837"
+       y="459.5607"
+       ry="25.029602"
+       inkscape:export-filename="logo-transparent.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="font-variation-settings:'wdth' 87, 'wght' 600;fill:none;stroke:#141414;stroke-width:15.621;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:38.3624;stroke-opacity:1;paint-order:normal"
+       d="m 447.22878,510.34987 8.21336,-15.17482 -33.46318,-16.43775 -41.34017,69.40622"
+       id="path4"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="font-variation-settings:'wdth' 87, 'wght' 600;fill:none;stroke:#141414;stroke-width:14.568;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:38.3624;stroke-opacity:1"
+       id="path5"
+       sodipodi:type="arc"
+       sodipodi:cx="415.98883"
+       sodipodi:cy="580.06158"
+       sodipodi:rx="47.330231"
+       sodipodi:ry="48"
+       sodipodi:start="3.8690299"
+       sodipodi:end="2.8764689"
+       sodipodi:arc-type="arc"
+       d="m 380.63878,548.14361 a 47.330231,48 0 0 1 57.17665,-10.67335 47.330231,48 0 0 1 24.24474,53.5883 47.330231,48 0 0 1 -45.26754,36.9961 47.330231,48 0 0 1 -46.48032,-35.4157"
+       sodipodi:open="true" />
+    <path
+       style="font-variation-settings:'wdth' 87, 'wght' 600;fill:none;stroke:#141414;stroke-width:14.568;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:38.3624;stroke-opacity:1"
+       d="m 377.98289,628.0615 c 0,0 16.46217,-5.26084 24.68721,-29.04985"
+       id="path6"
        sodipodi:nodetypes="cc"
        inkscape:export-filename="swixtt.png"
        inkscape:export-xdpi="96"

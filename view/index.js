@@ -14,6 +14,7 @@ const daysPanel = document.querySelectorAll("tbody>tr");
 const tableName = document.querySelector(".table-name");
 const tagLine = document.querySelector(".tagline");
 const daysSat = document.querySelector(".day-saturday");
+const waitScreen = document.querySelector(".wait-screen");
 
 // Day is not the same as Javascript day counting
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
@@ -368,9 +369,22 @@ const updateInfo = () => {
     }</b>. Thank you for using Swixtt`;
         updateElement.innerHTML = updateContent;
         updatesArea.append(updateElement);
+      } else if (d.type == "PRIVATE") {
+        // In a case where the owner set it to private
+        window.location.href = `./../error?e=private?t=${tableID}`;
+      } else if (d.type == "DELETED") {
+        // Time table was deleted
+        window.location.href = `./../error?e=deleted?t=${tableID}`;
+      } else if (d.type == "NOT-FOUND") {
+        // Time table not found on the server
+        window.location.href = `./../error?e=not-found?t=${tableID}`;
       } else {
-        window.location.href = "./../error?e=not-found";
+        // The error is not specified by server
+        window.location.href = `./../error?e=unknown?t=${tableID}`;
       }
+
+      // Remove wait screen
+      waitScreen.classList.toggle("hide", true);
     });
 };
 
