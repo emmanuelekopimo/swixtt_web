@@ -2,6 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebas
 import {
   getAuth,
   createUserWithEmailAndPassword,
+  sendEmailVerification,
 } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
 
 // See: https://firebase.google.com/docs/web/learn-more#config-object
@@ -36,6 +37,10 @@ const signUp = () => {
       const user = userCredential.user;
       console.log(user);
       // ...
+      sendEmailVerification(auth.currentUser).then(() => {
+        // Email verification sent!
+        // ...
+      });
     })
     .catch((error) => {
       const errorCode = error.code;
