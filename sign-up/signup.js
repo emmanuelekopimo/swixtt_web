@@ -1,10 +1,16 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics.js";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   sendEmailVerification,
+  updateProfile,
 } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+import {
+  getFirestore,
+  doc,
+  setDoc,
+} from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBu5o6QgRZWtG7CPsREmTJ7YNf0lD0gg7A",
@@ -18,9 +24,13 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
+
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(app);
 
 // Site start
 const emailBox = document.querySelector(".email-box");
@@ -35,15 +45,36 @@ const signUp = () => {
       // Signed up
       const user = userCredential.user;
       console.log(user);
-      // ...
-      sendEmailVerification(auth.currentUser).then(() => {
-        // Email verification sent!
-        // ...
-      });
+      //
+      updateProfile(user, {
+        displayName: user.email.split("@")[0],
+      })
+        .then(() => {
+          // Profile updated!
+          // ...
+        })
+        .catch((error) => {
+          // An error occurred
+          // ...
+        });
+
+      // Create user file here
+      const userRef = doc(db, "users", user.uid);
+      const userData = {
+        verified: false,
+        timetables: [],
+        sent: [],
+        recv: [],
+      };
+      setDoc(userRef, userData);
+
+      // Finally redirect user to verify
+      location.href = "./../email-verify";
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
       // ..
     });
 };
