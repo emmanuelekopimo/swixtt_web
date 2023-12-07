@@ -21,25 +21,13 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // Site start
-const emailBox = document.querySelector(".email-box");
-const passwordBox = document.querySelector(".pass-box");
-const smallButton = document.querySelector(".small-button");
+const user = auth.currentUser;
 
-const logIn = () => {
-  let email = emailBox.value;
-  let password = passwordBox.value;
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed up
-      const user = userCredential.user;
-      console.log(user);
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // ..
-    });
-};
-
-smallButton.addEventListener("click", logIn);
+if (user) {
+  console.log(user);
+  // User is signed in, see docs for a list of available properties
+  // https://firebase.google.com/docs/reference/js/auth.user
+  // ...
+} else {
+  // No user is signed in.
+}
