@@ -1,0 +1,40 @@
+* {
+  font-family: "Inter", sans-serif;
+  color: rgb(20, 20, 20);
+}
+
+.top-bar {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: 40px;
+  display: grid;
+  grid-template-columns: 90px 1fr 30px;
+  align-items: center;
+  padding: 10px;
+  background-color: rgb(255, 185, 138);
+}
+
+.logo {
+  width: 100%;
+}
+
+.home-icon {
+  width: 100%;
+}
+
+.title {
+  text-align: left;
+  font-size: 20pt;
+  margin: 0px;
+  margin-inline: 15px;
+  align-self: last baseline;
+}
+
+.content {
+  margin-top: 80px;
+}
+
+.p {
+}

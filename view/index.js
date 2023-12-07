@@ -16,8 +16,16 @@ const tagLine = document.querySelector(".tagline");
 const daysSat = document.querySelector(".day-saturday");
 const waitScreen = document.querySelector(".wait-screen");
 
-// Day is not the same as Javascript day counting
-const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+// Days is not the same as Javascript day counting
+// Possible school days
+const days = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
 
 var urlParams = new URLSearchParams(window.location.search);
 var tableID = urlParams.get("t"); // Table ID
