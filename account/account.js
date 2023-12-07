@@ -21,14 +21,16 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // Site start
-const user = auth.currentUser;
-
-if (user) {
-  console.log(user);
-  // User is signed in, see docs for a list of available properties
-  // https://firebase.google.com/docs/reference/js/auth.user
-  // ...
-} else {
-  console.log(user);
-  // No user is signed in.
-}
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/auth.user
+    console.log("Signed in");
+    print(user);
+    // ...
+  } else {
+    // User is signed out
+    // ...
+    console.log("Signed out");
+  }
+});
