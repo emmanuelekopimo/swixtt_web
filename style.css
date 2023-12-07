@@ -52,6 +52,15 @@ body {
   text-wrap: nowrap;
 }
 
+.input-tag {
+  color: rgb(77, 77, 77);
+  text-wrap: nowrap;
+  display: inline;
+  margin-top: 4px;
+  margin-bottom: -5px;
+  font-size: 12px;
+}
+
 hr {
   border: 1px solid rgb(27, 27, 27);
 }

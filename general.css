@@ -146,7 +146,7 @@ button {
 
 .recent-tt.show {
   display: block;
-  margin-top: 30px;
+  margin-top: 3px;
   margin-bottom: 25px;
 }
 
@@ -220,7 +220,7 @@ button {
   border: 1px solid rgb(255, 139, 44);
   border-radius: 10px;
   padding-inline: 15px;
-  padding-bottom: 20px;
+  padding-bottom: 0;
 }
 
 .center-text {
@@ -241,6 +241,7 @@ button {
   background-color: rgb(190, 190, 190);
   padding: 8px;
   border-radius: 5px;
+  flex-wrap: wrap;
 }
 
 .email-box {
