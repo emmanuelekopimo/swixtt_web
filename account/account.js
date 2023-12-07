@@ -29,5 +29,6 @@ if (user) {
   // https://firebase.google.com/docs/reference/js/auth.user
   // ...
 } else {
+  console.log(user);
   // No user is signed in.
 }
