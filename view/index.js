@@ -1,3 +1,29 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics.js";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+} from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBu5o6QgRZWtG7CPsREmTJ7YNf0lD0gg7A",
+  authDomain: "swxitt-x.firebaseapp.com",
+  projectId: "swxitt-x",
+  storageBucket: "swxitt-x.appspot.com",
+  messagingSenderId: "136667624581",
+  appId: "1:136667624581:web:0529be08bb7531972065ec",
+  measurementId: "G-1J12EFBLKZ",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(app);
+
+// Site start
 // Elements
 const drawArea = document.querySelector(".draw-area");
 const updatesButton = document.querySelector(".updates-button");
@@ -33,21 +59,18 @@ const serverUrl = "https://swixtt.cyclic.app";
 // const serverUrl = "http://127.0.0.1:3000";
 
 const updateInfo = () => {
-  fetch(`${serverUrl}/view?t=${tableID}`)
-    .then((res) => {
-      return res.json();
-    })
-    .then((d) => {
-      // Structure the data
-      if (d.type == "PASS") {
-        console.log(d);
-        let data = d.data;
+  const docRef = doc(db, "timetables", tableID);
+  getDoc(docRef)
+    .then((docSnap) => {
+      if (docSnap.exists()) {
+        console.log(docSnap.data());
+        let data = docSnap.data();
         let customDateStr = "Dec 9 2023 7:00:00 ";
         var today = new Date();
-        let id = data.id;
+        let id = tableID;
         let name = data.name;
         let school = data.school;
-        let level = data.level;
+        let year = data.year;
         let cards = data.cards;
         let updates = data.updates;
         let holiday = data.holiday;
@@ -56,67 +79,67 @@ const updateInfo = () => {
 
         //Update time table header
         tableName.innerText = name;
-        tagLine.innerText = level + " • " + school;
+        tagLine.innerText = year + " • " + school;
 
         // Set up draw area
         drawArea.innerHTML = `
-        
-      <div class="start-pin">
-      <span class="space"></span>6<br>
-      <span class="space"></span>AM
-      </div>
-      <div class="static-pin" style="left:100px">
-          <span class="space"></span>7<br>
-          <span class="space"></span>AM
-      </div>
-      <div class="static-pin" style="left:200px">
-          <span class="space"></span>8<br>
-          <span class="space"></span>AM
-      </div>
-      <div class="static-pin" style="left:300px">
-          <span class="space"></span>9<br>
-          <span class="space"></span>AM
-      </div>
-      <div class="static-pin" style="left:400px">
-          <span class="space"></span>10<br>
-          <span class="space"></span>AM
-      </div>
-      <div class="static-pin" style="left:500px">
-          <span class="space"></span>11<br>
-          <span class="space"></span>AM
-      </div>
-      <div class="static-pin" style="left:600px">
-          <span class="space"></span>12<br>
-          <span class="space"></span>PM
-      </div>
-      <div class="static-pin" style="left:700px">
-          <span class="space"></span>1<br>
-          <span class="space"></span>PM
-      </div>
-      <div class="static-pin" style="left:800px">
-          <span class="space"></span>2<br>
-          <span class="space"></span>PM
-      </div>
-      <div class="static-pin" style="left:900px">
-          <span class="space"></span>3<br>
-          <span class="space"></span>PM
-      </div>
-      <div class="static-pin" style="left:1000px">
-          <span class="space"></span>4<br>
-          <span class="space"></span>PM
-      </div>
-      <div class="static-pin" style="left:1100px">
-          <span class="space"></span>5<br>
-          <span class="space"></span>PM
-      </div>
-      <div class="end-pin">
-          <span class="space"></span>6<br>
-          <span class="space"></span>PM
-      </div>
-      <div class="time-bar">
-
-      </div>
-      `;
+          
+        <div class="start-pin">
+        <span class="space"></span>6<br>
+        <span class="space"></span>AM
+        </div>
+        <div class="static-pin" style="left:100px">
+            <span class="space"></span>7<br>
+            <span class="space"></span>AM
+        </div>
+        <div class="static-pin" style="left:200px">
+            <span class="space"></span>8<br>
+            <span class="space"></span>AM
+        </div>
+        <div class="static-pin" style="left:300px">
+            <span class="space"></span>9<br>
+            <span class="space"></span>AM
+        </div>
+        <div class="static-pin" style="left:400px">
+            <span class="space"></span>10<br>
+            <span class="space"></span>AM
+        </div>
+        <div class="static-pin" style="left:500px">
+            <span class="space"></span>11<br>
+            <span class="space"></span>AM
+        </div>
+        <div class="static-pin" style="left:600px">
+            <span class="space"></span>12<br>
+            <span class="space"></span>PM
+        </div>
+        <div class="static-pin" style="left:700px">
+            <span class="space"></span>1<br>
+            <span class="space"></span>PM
+        </div>
+        <div class="static-pin" style="left:800px">
+            <span class="space"></span>2<br>
+            <span class="space"></span>PM
+        </div>
+        <div class="static-pin" style="left:900px">
+            <span class="space"></span>3<br>
+            <span class="space"></span>PM
+        </div>
+        <div class="static-pin" style="left:1000px">
+            <span class="space"></span>4<br>
+            <span class="space"></span>PM
+        </div>
+        <div class="static-pin" style="left:1100px">
+            <span class="space"></span>5<br>
+            <span class="space"></span>PM
+        </div>
+        <div class="end-pin">
+            <span class="space"></span>6<br>
+            <span class="space"></span>PM
+        </div>
+        <div class="time-bar">
+  
+        </div>
+        `;
 
         // Add time mark
         let todayLeft =
@@ -186,8 +209,8 @@ const updateInfo = () => {
           element.style.width = width.toString() + "px";
           element.style.height = height.toString() + "%";
           let content = `<span class="card-title">${card.code}</span>
-                    <br>
-                    <span class="card-location">${card.location}</span> `;
+                      <br>
+                      <span class="card-location">${card.location}</span> `;
 
           // Checking class that is going on now
           if (card.day == today.getDay() - 1 && card.active && !holiday) {
@@ -372,28 +395,36 @@ const updateInfo = () => {
         updateElement.classList.add("update");
         updateElement.classList.add("system-update");
         let updateContent = `<div class="update-title">${today.toLocaleDateString()}: Swixtt • Today</div>
-    All updates and information about the timetable are shown here. This time table is managed by <b>${
-      data.username
-    }</b>. Thank you for using Swixtt`;
+      All updates and information about the timetable are shown here. This time table is managed by <b>${
+        data.username
+      }</b>. Thank you for using Swixtt`;
         updateElement.innerHTML = updateContent;
         updatesArea.append(updateElement);
-      } else if (d.type == "PRIVATE") {
-        // In a case where the owner set it to private
-        window.location.href = `./../error?e=private?t=${tableID}`;
-      } else if (d.type == "DELETED") {
-        // Time table was deleted
-        window.location.href = `./../error?e=deleted?t=${tableID}`;
-      } else if (d.type == "NOT-FOUND") {
-        // Time table not found on the server
-        window.location.href = `./../error?e=not-found?t=${tableID}`;
-      } else {
-        // The error is not specified by server
-        window.location.href = `./../error?e=unknown?t=${tableID}`;
       }
-
-      // Remove wait screen
-      waitScreen.classList.toggle("hide", true);
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+      // ..
     });
+
+  // else if (d.type == "PRIVATE") {
+  //   // In a case where the owner set it to private
+  //   window.location.href = `./../error?e=private?t=${tableID}`;
+  // } else if (d.type == "DELETED") {
+  //   // Time table was deleted
+  //   window.location.href = `./../error?e=deleted?t=${tableID}`;
+  // } else if (d.type == "NOT-FOUND") {
+  //   // Time table not found on the server
+  //   window.location.href = `./../error?e=not-found?t=${tableID}`;
+  // } else {
+  //   // The error is not specified by server
+  //   window.location.href = `./../error?e=unknown?t=${tableID}`;
+  // }
+
+  // Remove wait screen
+  waitScreen.classList.toggle("hide", true);
 };
 
 updatesButton.addEventListener("click", () => {
@@ -410,4 +441,4 @@ modalCover.addEventListener("click", () => {
 });
 
 updateInfo();
-setInterval(updateInfo, 10000);
+setInterval(updateInfo, 15000);
