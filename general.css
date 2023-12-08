@@ -170,12 +170,12 @@ button {
   background-color: rgb(255, 145, 54);
 }
 
-.tt-item:nth-child(1) {
+.tt-item:first-of-type {
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
 }
 
-.tt-item:last-child {
+.tt-item:last-of-type {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   border-bottom-width: 1px;

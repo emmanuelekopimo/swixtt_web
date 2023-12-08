@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./../style.css">
+    <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./../general.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +15,43 @@
 </head>
 
 <body>
+    <section class="top-bar" style="position: fixed;left:0px;right:0px;top:0px;">
+        <div class="logo-name">
+            <img src="./../res/icons/swixtt.png" alt="Swixtt" class="logo-icon"
+                onclick="location.href='./../index.html'">
+        </div>
+        <hr>
+        <div class="page-info">
+            <span class="top-text">
+                Welcome,
+            </span>
+            <br>
+            <span class="bottom-text">
+                username
+            </span>
+        </div>
+    </section>
+    <section class="tt-list">
+        <div class="tt-card">
+            <div class="tt-i">
+                <div class="tt-icon">
 
+                    <div class="tt-icon-i">
+                        CS
+                    </div>
+                </div>
+                <div class="tt-name">Computer Science</div>
+                <div class="tt-date">University of Port Harcourt</div>
+            </div>
+            <div class="tt-ops">
+                <button title="Edit" class="op-button">Edit</button>
+                <button title="View" class="op-button">View</button>
+                <button title="Share" class="op-button">Share</button>
+                <button title="Delete" class="op-button">Delete</button>
+            </div>
+        </div>
+    </section>
+    <button title="Delete" class="add-tt-button">Create new time table</button>
 </body>
 
 </html>

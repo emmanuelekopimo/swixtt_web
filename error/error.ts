@@ -19,10 +19,11 @@ if (errorType == "not-found") {
   caption.innerHTML = `An unknown error occured. That's all we know
           <a href="./../index.html">Back to home</a>`;
 } else if (errorType == "verify-email") {
-  caption.innerHTML = `Check your inbox. A verification email was sent to you. Use the link to verify your email
+  caption.innerHTML = `Check your inbox. A verification email was sent to you. Use the link to verify your email.
+          You can't find it? <a href="./../email-verify/">resend link</a>.
           <a href="./../index.html">Back to home</a>`;
 } else {
   caption.innerHTML = `A fatal error occured. Help us fix this by 
-            <a href="https://swixtt.cyclic.app/report/?t=${tableID}">reporting</a>.
+            <a href=".">reporting</a>.
             <a href="./../index.html">Back to home</a>`;
 }

@@ -1,0 +1,123 @@
+* {
+  font-family: "Inter", sans-serif;
+  color: rgb(20, 20, 20);
+}
+
+body {
+  background-color: rgb(255, 254, 178);
+}
+
+.top-bar {
+  background-color: rgb(255, 185, 138);
+  padding: 8px;
+  display: grid;
+  grid-template-columns: 120px 2px 1fr;
+}
+
+.logo-name {
+  font-size: 30pt;
+}
+
+.logo-icon {
+  width: 95%;
+  margin-top: 4px;
+}
+
+.page-info {
+  padding: 4px;
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.top-text {
+  font-size: 10pt;
+  color: rgb(77, 77, 77);
+  text-wrap: nowrap;
+}
+
+.bottom-text {
+  font-size: 14pt;
+  text-wrap: nowrap;
+}
+
+hr {
+  border: 1px solid rgb(27, 27, 27);
+}
+
+.tt-list {
+  margin-top: 80px;
+  margin-inline: 8px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.tt-card {
+  border: 1px solid rgb(255, 139, 44);
+  border-radius: 6px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.tt-i {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  column-gap: 5px;
+
+  border-bottom-width: 0px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.tt-ops {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  max-width: 380px;
+  column-gap: 4px;
+}
+
+.op-button {
+  display: block;
+  background-color: rgb(255, 139, 44);
+  color: black;
+  font-size: 12pt;
+  border-radius: 3px;
+  border-width: 0px;
+  padding-inline: 10px;
+  padding-block: 5px;
+}
+
+.op-button:hover {
+  background-color: rgb(255, 156, 74);
+}
+
+.op-button:active {
+  background-color: rgb(255, 115, 0);
+}
+
+.add-tt-button {
+  display: block;
+  margin: auto;
+  background-color: rgb(255, 139, 44);
+  color: black;
+  font-size: 14pt;
+  border-radius: 8px;
+  border-width: 0px;
+  padding-inline: 20px;
+  padding-block: 6px;
+  margin-top: 10px;
+}
+
+.add-tt-button:hover {
+  background-color: rgb(255, 156, 74);
+}
+
+.add-tt-button:active {
+  background-color: rgb(255, 115, 0);
+}

@@ -69,7 +69,7 @@ const signUp = () => {
       setDoc(userRef, userData);
 
       // Finally redirect user to verify
-      location.href = "./../email-verify";
+      // location.href = "./../email-verify";
     })
     .catch((error) => {
       const errorCode = error.code;
