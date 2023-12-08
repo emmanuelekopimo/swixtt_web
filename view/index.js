@@ -401,8 +401,6 @@ const updateInfo = () => {
         updateElement.innerHTML = updateContent;
         updatesArea.append(updateElement);
       }
-      // Remove wait screen
-      waitScreen.classList.toggle("hide", true);
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -424,6 +422,9 @@ const updateInfo = () => {
   //   // The error is not specified by server
   //   window.location.href = `./../error?e=unknown?t=${tableID}`;
   // }
+  // TODO: Move waitscreen to the appropaite place
+  // Remove wait screen
+  waitScreen.classList.toggle("hide", true);
 };
 
 updatesButton.addEventListener("click", () => {
