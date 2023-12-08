@@ -205,7 +205,7 @@ hr {
 .bubble {
   background-color: rgb(31, 31, 31);
   padding-inline: 6px;
-  padding-block: 2px;
+  padding-block: 0px;
   border-radius: 50%;
   color: rgb(255, 139, 44);
   font-weight: 500;
