@@ -67,9 +67,13 @@ const signUp = () => {
         recv: [],
       };
       setDoc(userRef, userData);
-
+      // Send email verification
+      sendEmailVerification(user).then(() => {
+        // Email verification sent!
+        console.log("Verification email sent");
+        location.href = "./../email-verify";
+      });
       // Finally redirect user to verify
-      location.href = "./../email-verify";
     })
     .catch((error) => {
       const errorCode = error.code;

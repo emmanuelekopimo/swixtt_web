@@ -24,18 +24,31 @@ const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
 //Site Start
+const resendLink = document.querySelector(".resend");
+const waitText = document.querySelector(".wait");
+const resentText = document.querySelector(".tagline");
 onAuthStateChanged(auth, (user) => {
   if (user) {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/auth.user
     // ...
-    sendEmailVerification(user).then(() => {
-      // Email verification sent!
-      console.log("Verification email sent");
-    });
+    resendLink.classList.toggle("hide", false);
+    waitText.classList.toggle("hide", true);
   } else {
     // User is signed out
     // ...
     location.href = "./../login";
   }
+});
+
+resendLink.addEventListener("click", (event) => {
+  // Send email verification
+  sendEmailVerification(auth.currentUser).then(() => {
+    // Email verification sent!
+    console.log("Verification email sent");
+    resentText.classList.toggle("hide", false);
+    setTimeout(() => {
+      resentText.classList.toggle("hide", true);
+    }, 6000);
+  });
 });

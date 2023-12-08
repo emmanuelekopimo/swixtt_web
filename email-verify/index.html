@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./../style.css">
+    <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./../general.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,9 +44,11 @@
             <div class="detail-area">
                 <p class="center-text caption">
                     Check your inbox. A verification email has been sent to you <b>now</b>. Use the link to verify your
-                    email. You can't find it? <a onclick="location.reload()">resend link</a>.
+                    email. You can't find it? <span class="wait">wait some seconds</span><a class="resend hide">resend
+                        link</a>.
                     <a href="./../index.html">Back to home</a>
                 </p>
+                <p class="tagline hide">Link has been sent now</p>
             </div>
 
         </main>

@@ -52,6 +52,10 @@ body {
   text-wrap: nowrap;
 }
 
+.tagline.hide {
+  display: none;
+}
+
 .input-tag {
   color: rgb(77, 77, 77);
   text-wrap: nowrap;
