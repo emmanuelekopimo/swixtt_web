@@ -32,8 +32,11 @@ onAuthStateChanged(auth, (user) => {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/auth.user
     // ...
-    resendLink.classList.toggle("hide", false);
-    waitText.classList.toggle("hide", true);
+    setTimeout(() => {
+      resendLink.classList.toggle("hide", false);
+      waitText.classList.toggle("hide", true);
+      resentText.classList.toggle("hide", true);
+    }, 6000);
   } else {
     // User is signed out
     // ...
@@ -43,12 +46,18 @@ onAuthStateChanged(auth, (user) => {
 
 resendLink.addEventListener("click", (event) => {
   // Send email verification
-  sendEmailVerification(auth.currentUser).then(() => {
+  sendEmailVerification(auth.currentUser, {
+    url: "https://swixtt.netlify.app/login",
+  }).then(() => {
     // Email verification sent!
     console.log("Verification email sent");
     resentText.classList.toggle("hide", false);
+    resendLink.classList.toggle("hide", true);
+    waitText.classList.toggle("hide", false);
     setTimeout(() => {
+      resendLink.classList.toggle("hide", false);
+      waitText.classList.toggle("hide", true);
       resentText.classList.toggle("hide", true);
-    }, 6000);
+    }, 10000);
   });
 });

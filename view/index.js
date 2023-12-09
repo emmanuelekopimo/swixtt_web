@@ -154,7 +154,7 @@ const updateInfo = () => {
           drawArea.append(timeElement);
         }
         // Add day mark
-        for (index = 0; index < daysPanel.length; index++) {
+        for (let index = 0; index < daysPanel.length; index++) {
           if (index > 0) {
             if (today.getDay() == index) {
               daysPanel[index].classList.toggle("today-day", true);
@@ -237,7 +237,7 @@ const updateInfo = () => {
 
         let nextClassNextWeek = true;
 
-        for (cardIndex = 0; cardIndex < cards.length; cardIndex++) {
+        for (let cardIndex = 0; cardIndex < cards.length; cardIndex++) {
           let card = cards[cardIndex];
           let start_minute = card.start[0] * 60 + card.start[1];
           let now_minute = today.getHours() * 60 + today.getMinutes();
@@ -287,7 +287,7 @@ const updateInfo = () => {
             nextClassNextWeek = false;
             let cCode = cards[0].code;
             let cLocation = cards[0].location;
-            for (i = 0; i < cards.length; i++) {
+            for (let i = 0; i < cards.length; i++) {
               let card = cards[i];
               if (card.active) {
                 cCode = cards[i].code;
@@ -354,7 +354,7 @@ const updateInfo = () => {
         if (nextClassNextWeek) {
           let cCode = cards[0].code;
           let cLocation = cards[0].location;
-          for (i = 0; i < cards.length; i++) {
+          for (let i = 0; i < cards.length; i++) {
             let card = cards[i];
             if (card.active) {
               cCode = cards[i].code;
@@ -365,8 +365,8 @@ const updateInfo = () => {
           textMajor.innerText = cCode;
           textDetails.innerText = cLocation;
           textMinor.innerHTML = `First lecture <b>next week</b>`;
-          if (today.getDay() - 1 == 4) {
-            onGoing.innerHTML = `<b>Swixtt:</b><br>Enjoy your weekend`;
+          if (today.getDay() - 1 >= 5) {
+            onGoing.innerHTML = `<b>SwixttBot:</b><br>Enjoy your weekend`;
           }
         }
         //updates

@@ -61,6 +61,8 @@ const signUp = () => {
       // Create user file here
       const userRef = doc(db, "users", user.uid);
       const userData = {
+        uid: user.uid,
+        name: user.email.split("@")[0],
         verified: false,
         timetables: [],
         sent: [],
@@ -68,7 +70,9 @@ const signUp = () => {
       };
       setDoc(userRef, userData);
       // Send email verification
-      sendEmailVerification(user).then(() => {
+      sendEmailVerification(user, {
+        url: "https://swixtt.netlify.app/login",
+      }).then(() => {
         // Email verification sent!
         console.log("Verification email sent");
         location.href = "./../email-verify";
