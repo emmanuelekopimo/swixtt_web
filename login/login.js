@@ -36,7 +36,8 @@ const logIn = () => {
       // Signed up
       const user = userCredential.user;
       console.log(user);
-      // ...
+      // Redirect user to accounts page
+      location.href = "./../account";
     })
     .catch((error) => {
       const errorCode = error.code;

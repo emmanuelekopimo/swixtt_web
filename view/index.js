@@ -61,21 +61,27 @@ const serverUrl = "https://swixtt.cyclic.app";
 const updateInfo = () => {
   const docRef = doc(db, "timetables", tableID);
   getDoc(docRef)
-    .then((docSnap) => {
+    .then(async (docSnap) => {
       if (docSnap.exists()) {
         console.log(docSnap.data());
         let data = docSnap.data();
         let customDateStr = "Dec 9 2023 7:00:00 ";
         var today = new Date();
-        let id = tableID;
-        let name = data.name;
-        let school = data.school;
-        let year = data.year;
-        let cards = data.cards;
-        let updates = data.updates;
-        let holiday = data.holiday;
-        let holiday_type = data.holiday_type;
-        let saturday = data.saturday;
+        let id = data.id; // Database id
+        let name = data.name; // Time table name
+        let school = data.school; // School/ University
+        let year = data.year; // Entry year
+        let cards = data.cards; // lecture cards
+        let updates = data.updates; // time table updates
+        let holiday = data.holiday; // holiday (boolean)
+        let holiday_type = data.holiday_type; // type of holiday
+        let saturday = data.saturday; // Saturday classes
+        let owner = data.owner;
+
+        // Resolve owner id into name
+        let ownerRef = doc(db, "users", owner);
+        let ownerObject = await getDoc(ownerRef);
+        let ownerName = ownerObject.data().name;
 
         //Update time table header
         tableName.innerText = name;
@@ -395,9 +401,7 @@ const updateInfo = () => {
         updateElement.classList.add("update");
         updateElement.classList.add("system-update");
         let updateContent = `<div class="update-title">${today.toLocaleDateString()}: Swixtt • Today</div>
-      All updates and information about the timetable are shown here. This time table is managed by <b>${
-        data.username
-      }</b>. Thank you for using Swixtt`;
+      All updates for the timetable are shown here. This time table is managed by <b>${ownerName}</b>. Thank you for using Swixtt`;
         updateElement.innerHTML = updateContent;
         updatesArea.append(updateElement);
       }
