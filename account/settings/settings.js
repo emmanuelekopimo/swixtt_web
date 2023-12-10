@@ -3,6 +3,7 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.0/firebase
 import {
   getAuth,
   onAuthStateChanged,
+  signOut,
 } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
 import {
   getFirestore,
@@ -83,4 +84,13 @@ const loadPage = async (user) => {
   waitScreen.classList.toggle("hide", true);
 };
 
-logOutButton.addEventListener("click", (event) => {});
+logOutButton.addEventListener("click", (event) => {
+  signOut(auth)
+    .then(() => {
+      // Sign-out successful.
+      location.href = "./../../index.html";
+    })
+    .catch((error) => {
+      // An error happened.
+    });
+});
