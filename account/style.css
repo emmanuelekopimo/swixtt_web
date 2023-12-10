@@ -8,10 +8,16 @@ body {
 }
 
 .top-bar {
-  background-color: rgb(255, 185, 138);
-  padding: 8px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: 48px;
   display: grid;
-  grid-template-columns: 120px 2px 1fr;
+  grid-template-columns: 120px 4px 1fr 35px;
+  align-items: center;
+  padding: 10px;
+  background-color: rgb(255, 185, 138);
 }
 
 .logo-name {
@@ -21,6 +27,24 @@ body {
 .logo-icon {
   width: 95%;
   margin-top: 4px;
+}
+
+.logo {
+  width: 100%;
+}
+
+.small-icon {
+  width: 100%;
+  padding: 2px;
+  border-radius: 4px;
+}
+
+.small-icon:hover {
+  background-color: rgb(255, 164, 103);
+}
+
+.small-icon:active {
+  background-color: rgb(255, 148, 77);
 }
 
 .page-info {
@@ -47,6 +71,7 @@ body {
 }
 
 hr {
+  align-self: stretch;
   border: 1px solid rgb(27, 27, 27);
 }
 

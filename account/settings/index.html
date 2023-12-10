@@ -4,43 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./../style.css">
     <!-- <link rel="stylesheet" href="./../general.css"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <script src="./account.js" defer type="module"></script>
-    <title>Swixtt - Account</title>
+    <script src="./settings.js" defer type="module"></script>
+    <title>Swixtt - Settings</title>
 </head>
 
 <body>
     <main class="wait-screen">
-        <img src="./../res/animations/logo.gif" alt="Loading" class="load-gif">
+        <img src="./../../res/animations/logo.gif" alt="Loading" class="load-gif">
     </main>
     <section class="top-bar" style="position: fixed;left:0px;right:0px;top:0px;">
         <div class="logo-name">
-            <img src="./../res/icons/swixtt.png" alt="Swixtt" class="logo-icon"
+            <img src="./../../res/icons/swixtt.png" alt="Swixtt" class="logo-icon"
                 onclick="location.href='./../index.html'">
         </div>
         <hr>
         <div class="page-info">
             <span class="top-text">
-                Welcome,
+                Settings ▶
             </span>
             <br>
             <span class="bottom-text">
                 username
             </span>
-            <img src="./../res/icons/verified-.png" alt="Verified Account" class="verified hide">
+            <img src="./../../res/icons/verified-.png" alt="Verified Account" class="verified hide">
         </div>
-        <img src="./../../res/icons/settings.png" alt="settings" class="small-icon"
-            onclick="location.href ='./settings/' ">
     </section>
     <section class="tt-list">
 
     </section>
-    <button title="Delete" class="add-tt-button">Create new time table</button>
+    <button title="Delete" class="add-tt-button log-out">Log Out</button>
 </body>
 
 </html>
