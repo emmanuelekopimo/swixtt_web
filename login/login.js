@@ -28,6 +28,16 @@ const emailBox = document.querySelector(".email-box");
 const passwordBox = document.querySelector(".pass-box");
 const smallButton = document.querySelector(".small-button");
 
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/auth.user
+    location.href = "./../account";
+  } else {
+    // User is signed out
+  }
+});
+
 const logIn = () => {
   let email = emailBox.value;
   let password = passwordBox.value;
