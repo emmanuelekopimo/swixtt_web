@@ -4,7 +4,6 @@ import {
   getFirestore,
   doc,
   getDoc,
-  Timestamp,
 } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -381,25 +380,20 @@ const updateInfo = () => {
         bubble.innerText = updates.length + 1;
         updatesArea.innerHTML = "";
         updates.forEach((update) => {
-          let created = new Timestamp(
-            update.created.seconds,
-            update.created.nanoseconds
-          )
-            .toDate()
-            .toLocaleDateString();
+          let created = update.created;
           let text = update.content;
-          let target_card_id = update.target;
+          let target_card_id = update.target_card_id;
           var course_code = "";
           var course_day = "";
           cards.forEach((card) => {
             if (card.id == target_card_id) {
               course_code = card.code;
-              course_day = "• " + days[card.day];
+              course_day = days[card.day];
             }
           });
           let element = document.createElement("div");
           element.classList.add("update");
-          let content = `<div class="update-title">${created}: ${course_code}  ${course_day}</div>${text}`;
+          let content = `<div class="update-title">${created}: ${course_code} • ${course_day}</div>${text}`;
           element.innerHTML = content;
           updatesArea.append(element);
         });

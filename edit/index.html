@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <script src="./index.js" type="module" defer></script>
+    <title>Swixtt</title>
+</head>
+
+<body>
+    <main class="wait-screen hide">
+        <img src="./../res/animations/logo.gif" alt="Loading" class="load-gif">
+    </main>
+    <main class="main edit">
+        <section class="top-bar">
+            <div class="logo-name">
+                <img src="./../res/icons/swixtt.png" alt="Swixtt" class="logo-icon"
+                    onclick="location.href='./../index.html'">
+            </div>
+            <hr>
+            <div class="table-info">
+                <span class="table-name">
+                    Department
+                </span>
+                <br>
+                <span class="tagline">
+                    School name
+                </span>
+            </div>
+
+        </section>
+        <section class="table-area">
+            <table class="days-panel">
+                <tbody class="days-table-body">
+                    <tr class="time-row">
+                        <td>Time</td>
+                    </tr>
+                    <tr>
+                        <td>M</td>
+                    </tr>
+                    <tr>
+                        <td>T</td>
+                    </tr>
+                    <tr>
+                        <td>W</td>
+                    </tr>
+                    <tr>
+                        <td>T</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                    </tr>
+                    <tr class="day-saturday">
+                        <td>S</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="scroll-area">
+                <div class="draw-area">
+
+                </div>
+            </div>
+        </section>
+
+        <section class="on-going hide">
+            <b>SwixttBot:</b> All changes are saved automatically
+        </section>
+        <section class="icon-button-area">
+            <div class="disable-cover"><span>Select a lecture card to edit</span></div>
+            <button class="icon-button-edit" title="Edit a lecture">Edit Lecture</button>
+            <button class="icon-button-edit" title="Add a duplicate of this lecture">Add Duplicate</button>
+            <button class="icon-button-edit" title="Delete this lecture">Delete Lecture</button>
+        </section>
+        <button class="add-lecture updates-button">
+            Add lecture
+        </button>
+        <button class="updates-button">
+            Edit updates
+        </button>
+    </main>
+    <div class="modal-cover hide">
+
+    </div>
+    <section class="modal hide">
+        <div class="update-bar">
+            <button class="icon-button">
+                <img src="./../res/icons/down.svg" alt="down-icon" class="small-icon">
+            </button>
+            Updates
+
+        </div>
+        <div class="updates-area">
+
+        </div>
+    </section>
+
+</body>
+
+</html>

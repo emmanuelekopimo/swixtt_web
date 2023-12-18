@@ -263,3 +263,26 @@ button {
 .label {
   margin-block: 5px;
 }
+
+.bottom-pop-up {
+  position: fixed;
+  bottom: 10px;
+  background: rgb(26, 26, 26);
+  color: rgb(255, 115, 0);
+  padding: 10px;
+  right: 8px;
+  left: 8px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 350px;
+}
+
+.bottom-pop-up.hide {
+  display: none;
+}
+
+.load-icon {
+  width: 25px;
+}

@@ -67,17 +67,23 @@ const signUp = () => {
         timetables: [],
         sent: [],
         recv: [],
+        notifications: [],
+        admin: false,
+        email: user.email,
+        desc: "",
+        account_type: "v1",
       };
-      setDoc(userRef, userData);
-      // Send email verification
-      sendEmailVerification(user, {
-        url: "https://swixtt.netlify.app/login",
-      }).then(() => {
-        // Email verification sent!
-        console.log("Verification email sent");
-        location.href = "./../email-verify";
+      setDoc(userRef, userData).then(() => {
+        sendEmailVerification(user, {
+          url: "https://swixtt.netlify.app/login",
+        }).then(() => {
+          // Email verification sent!
+          console.log("Verification email sent");
+          // Finally redirect user to verify
+          // location.href = "./../email-verify";
+        });
       });
-      // Finally redirect user to verify
+      // Send email verification
     })
     .catch((error) => {
       const errorCode = error.code;

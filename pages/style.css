@@ -20,8 +20,19 @@
   width: 100%;
 }
 
-.home-icon {
-  width: 100%;
+.small-icon {
+  width: 30px;
+  border-radius: 4px;
+  padding: 3px;
+  margin-right: 5px;
+}
+
+.small-icon:hover {
+  background-color: rgb(255, 164, 103);
+}
+
+.small-icon:active {
+  background-color: rgb(255, 148, 77);
 }
 
 .title {
@@ -37,4 +48,9 @@
 }
 
 .p {
+  margin-block: 5px;
+}
+
+h2 {
+  margin-block: 5px;
 }

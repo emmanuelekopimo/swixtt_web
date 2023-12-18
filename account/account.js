@@ -53,7 +53,7 @@ const loadPage = async (user) => {
   let userRef = doc(db, "users", user.uid);
   let userObject = await getDoc(userRef);
   let userData = userObject.data();
-
+  console.log(userData);
   userName.innerText = userData.name;
 
   if (userData.verified) {

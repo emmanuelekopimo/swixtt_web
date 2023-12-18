@@ -26,7 +26,10 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/auth.user
-    location.href = "./../account";
+    //TODO check wether email is verified here. Before redirecting
+    if (user.emailVerified) {
+      location.href = "./../account";
+    }
   } else {
     // User is signed out
   }

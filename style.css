@@ -18,6 +18,17 @@ body {
   grid-template-rows: 70px 3.6fr 47px 0.7fr 47px;
 }
 
+.main.edit {
+  background-color: rgb(255, 254, 178);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  display: grid;
+  grid-template-rows: 70px 3.6fr 47px 0.7fr 47px 47px;
+}
+
 .top-bar {
   background-color: rgb(255, 185, 138);
   padding: 8px;
@@ -195,9 +206,52 @@ hr {
   padding: 10px;
 }
 
+.icon-button-area {
+  margin: 10px;
+  padding: 2px;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr 1fr 1fr;
+  position: relative;
+}
+
+.icon-button-edit {
+  display: flex;
+  border-width: 0px;
+  border-radius: 4px;
+  background: linear-gradient(150deg, rgb(255, 185, 138), rgb(255, 185, 138));
+  font-size: 13pt;
+  padding: 10px;
+  font-weight: 500;
+  align-items: center;
+  justify-content: stretch;
+}
+
+.disable-cover {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(148, 148, 148);
+  border-radius: 6px;
+  font-size: 12pt;
+}
+
+.disable-cover.hide {
+  display: none;
+}
+
+.icon-button-edit:hover {
+  background: linear-gradient(150deg, rgb(255, 160, 97), rgb(255, 185, 138));
+}
+
 .updates-button {
   border-width: 0px;
-  border-radius: 9px;
+  border-radius: 5px;
   background-color: rgb(255, 139, 44);
   margin: 10px;
   margin-top: 0px;
