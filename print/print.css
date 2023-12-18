@@ -1,0 +1,10 @@
+html,
+body {
+  height: 100%;
+}
+
+.table-area-top {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 40px 1fr;
+}

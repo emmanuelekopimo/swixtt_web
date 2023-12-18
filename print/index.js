@@ -41,7 +41,6 @@ const daysPanel = document.querySelectorAll("tbody>tr");
 const tableName = document.querySelector(".table-name");
 const tagLine = document.querySelector(".tagline");
 const daysSat = document.querySelector(".day-saturday");
-const waitScreen = document.querySelector(".wait-screen");
 
 // Days is not the same as Javascript day counting
 // Possible school days
@@ -83,10 +82,6 @@ const updateInfo = () => {
         let ownerRef = doc(db, "users", owner);
         let ownerObject = await getDoc(ownerRef);
         let ownerName = ownerObject.data().name;
-
-        //Update time table header
-        tableName.innerText = name;
-        tagLine.innerText = year + " • " + school;
 
         // Set up draw area
         drawArea.innerHTML = `
@@ -192,8 +187,7 @@ const updateInfo = () => {
         } else {
           daysSat.classList.toggle("hide", true);
         }
-        `No lecture going on now. Read your books in anticipation for the next lectures`;
-        onGoing.innerHTML = `No lecture going on now. Read your books in anticipation for the next lectures`;
+
         // For each card
         cards.forEach((card) => {
           let start = (card.start[0] - 6) * 60 + card.start[1];
@@ -227,7 +221,6 @@ const updateInfo = () => {
 
             if (now_minute >= start_minute && now_minute < end_minute) {
               // That class is going on
-              onGoing.innerHTML = `<b>Ongoing:</b> ${card.code} @ ${card.location}`;
 
               element.classList.toggle("now", true);
               onGoing.classList.toggle("hide", false);
@@ -241,177 +234,9 @@ const updateInfo = () => {
           element.innerHTML = content;
           drawArea.append(element);
         });
-
-        let nextClassNextWeek = true;
-
-        for (let cardIndex = 0; cardIndex < cards.length; cardIndex++) {
-          let card = cards[cardIndex];
-          let start_minute = card.start[0] * 60 + card.start[1];
-          let now_minute = today.getHours() * 60 + today.getMinutes();
-          //One day or public holiday
-          if (holiday && holiday_type == "one-day") {
-            if (card.day > today.getDay() - 1 && card.active) {
-              // That is the next class
-              nextClassNextWeek = false;
-              textMajor.innerText = card.code;
-              textDetails.innerText = card.location;
-              onGoing.innerHTML = `<b>Swixtt:</b><br>Enjoy your holiday`;
-              if (card.day == today.getDay() - 1) {
-                let intervalMins = start_minute - now_minute;
-                let cardDate = new Date();
-                cardDate.setHours(0, 0, 0);
-                cardDate.setMinutes(intervalMins);
-                let nextHours = cardDate.getHours();
-                let nextMinutes = cardDate.getMinutes();
-                let minuteStr = "";
-                if (nextMinutes > 0) {
-                  minuteStr = `${cardDate.getMinutes()} minute${
-                    nextMinutes > 1 ? "s" : ""
-                  }`;
-                }
-                if (nextHours >= 1) {
-                  textMinor.innerHTML = `Next lecture in <b>${nextHours} hour${
-                    nextHours > 1 ? "s" : ""
-                  } ${minuteStr}</b>`;
-                } else {
-                  textMinor.innerHTML = `Next lecture in <b>${minuteStr}</b>`;
-                }
-              } else {
-                let day = days[card.day];
-                if (card.day - (today.getDay() - 1) == 1) {
-                  textMinor.innerHTML = `First lecture <b>tomorrow</b>`;
-                } else {
-                  textMinor.innerHTML = `First lecture on <b>${day}</b>`;
-                }
-              }
-              break;
-            }
-            break;
-          }
-
-          //Holiday is more than one week or a break or strike
-          else if (holiday && holiday_type == "break") {
-            nextClassNextWeek = false;
-            let cCode = cards[0].code;
-            let cLocation = cards[0].location;
-            for (let i = 0; i < cards.length; i++) {
-              let card = cards[i];
-              if (card.active) {
-                cCode = cards[i].code;
-                cLocation = cards[i].location;
-                break;
-              }
-            }
-            textMajor.innerText = cCode;
-            textDetails.innerText = cLocation;
-            textMinor.innerHTML = `First lecture <b>on resumption</b>`;
-            onGoing.innerHTML = `<b>Swixtt:</b><br>Enjoy your break`;
-          }
-          // No holiday or break
-          else {
-            if (card.day >= today.getDay() - 1 && card.active) {
-              // That is the next class
-
-              if (card.day == today.getDay() - 1 && start_minute > now_minute) {
-                nextClassNextWeek = false;
-                textMajor.innerText = card.code;
-                textDetails.innerText = card.location;
-                let intervalMins = start_minute - now_minute;
-                console.log(intervalMins);
-                let cardDate = new Date();
-                cardDate.setHours(0, 0, 0);
-                cardDate.setMinutes(intervalMins);
-                let nextHours = cardDate.getHours();
-                let nextMinutes = cardDate.getMinutes();
-
-                let minuteStr = "";
-                if (nextMinutes > 0) {
-                  minuteStr = `${cardDate.getMinutes()} minute${
-                    nextMinutes > 1 ? "s" : ""
-                  }`;
-                }
-                if (nextHours >= 1) {
-                  textMinor.innerHTML = `Next lecture in <b>${nextHours} hour${
-                    nextHours > 1 ? "s" : ""
-                  } ${minuteStr}</b>`;
-                } else {
-                  textMinor.innerHTML = `Next lecture in <b>${minuteStr}</b>`;
-                }
-                break;
-              } else if (card.day > today.getDay() - 1) {
-                nextClassNextWeek = false;
-                if (card.day - (today.getDay() - 1) == 1) {
-                  textMajor.innerText = card.code;
-                  textDetails.innerText = card.location;
-                  textMinor.innerHTML = `First lecture <b>tomorrow</b>`;
-                  break;
-                } else {
-                  textMajor.innerText = card.code;
-                  textDetails.innerText = card.location;
-                  let day = days[card.day];
-                  textMinor.innerHTML = `First lecture on <b>${day}</b>`;
-                  break;
-                }
-              }
-            }
-          }
-        }
-
-        // If the next class is next week
-        if (nextClassNextWeek) {
-          let cCode = cards[0].code;
-          let cLocation = cards[0].location;
-          for (let i = 0; i < cards.length; i++) {
-            let card = cards[i];
-            if (card.active) {
-              cCode = cards[i].code;
-              cLocation = cards[i].location;
-              break;
-            }
-          }
-          textMajor.innerText = cCode;
-          textDetails.innerText = cLocation;
-          textMinor.innerHTML = `First lecture <b>next week</b>`;
-          if (today.getDay() - 1 >= 5) {
-            onGoing.innerHTML = `<b>SwixttBot:</b><br>Enjoy your weekend`;
-          }
-        }
-        //updates
-
-        bubble.innerText = updates.length + 1;
-        updatesArea.innerHTML = "";
-        updates.forEach((update) => {
-          let created = new Timestamp(
-            update.created.seconds,
-            update.created.nanoseconds
-          )
-            .toDate()
-            .toLocaleDateString();
-          let text = update.content;
-          let target_card_id = update.target;
-          var course_code = "";
-          var course_day = "";
-          cards.forEach((card) => {
-            if (card.id == target_card_id) {
-              course_code = card.code;
-              course_day = "• " + days[card.day];
-            }
-          });
-          let element = document.createElement("div");
-          element.classList.add("update");
-          let content = `<div class="update-title">${created}: ${course_code}  ${course_day}</div>${text}`;
-          element.innerHTML = content;
-          updatesArea.append(element);
-        });
-        let updateElement = document.createElement("div");
-        updateElement.classList.add("update");
-        updateElement.classList.add("system-update");
-        let updateContent = `<div class="update-title">${today.toLocaleDateString()}: Swixtt • Today</div>
-      All updates for the timetable are shown here. This time table is managed by <b>${ownerName}</b>. Thank you for using Swixtt`;
-        updateElement.innerHTML = updateContent;
-        updatesArea.append(updateElement);
       }
     })
+
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -434,21 +259,7 @@ const updateInfo = () => {
   // }
   // TODO: Move waitscreen to the appropaite place
   // Remove wait screen
-  waitScreen.classList.toggle("hide", true);
 };
-
-updatesButton.addEventListener("click", () => {
-  modal.classList.toggle("hide", false);
-  modalCover.classList.toggle("hide", false);
-});
-updateBar.addEventListener("click", () => {
-  modal.classList.toggle("hide", true);
-  modalCover.classList.toggle("hide", true);
-});
-modalCover.addEventListener("click", () => {
-  modal.classList.toggle("hide", true);
-  modalCover.classList.toggle("hide", true);
-});
 
 updateInfo();
 setInterval(updateInfo, 15000);
