@@ -82,7 +82,9 @@ const updateInfo = () => {
         // Resolve owner id into name
         let ownerRef = doc(db, "users", owner);
         let ownerObject = await getDoc(ownerRef);
-        let ownerName = ownerObject.data().name;
+        let ownerData = ownerObject.data();
+        let ownerName = ownerData.name;
+        let ownerVerified = ownerData.verified;
 
         //Update time table header
         tableName.innerText = name;
@@ -407,9 +409,16 @@ const updateInfo = () => {
         updateElement.classList.add("update");
         updateElement.classList.add("system-update");
         let updateContent = `<div class="update-title">${today.toLocaleDateString()}: Swixtt • Today</div>
-      All updates for the timetable are shown here. This time table is managed by <b>${ownerName}</b>. Thank you for using Swixtt`;
+      All updates for the timetable are shown here. This time table is managed by <b>${ownerName}</b> <img src="./../res/icons/verified-.png" alt="Verified Account" class="verified hide">. Thank you for using Swixtt`;
         updateElement.innerHTML = updateContent;
         updatesArea.append(updateElement);
+        //hide class verified if user is not verified
+        if (ownerVerified) {
+          let verifiedIcons = document.querySelectorAll(".verified");
+          verifiedIcons.forEach((icon) => {
+            icon.classList.remove("hide");
+          });
+        }
       }
     })
     .catch((error) => {

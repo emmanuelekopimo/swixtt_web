@@ -393,3 +393,13 @@ hr {
   margin: auto;
   margin-top: 180px;
 }
+
+.verified {
+  width: 18px;
+  transform: translateY(3px);
+  display: inline;
+}
+
+.verified.hide {
+  display: none;
+}

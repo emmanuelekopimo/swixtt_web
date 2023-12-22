@@ -191,7 +191,7 @@ const updateInfo = () => {
         } else {
           daysSat.classList.toggle("hide", true);
         }
-        onGoing.innerHTML = `You are now in editing mode. All changes will be saved immediately`;
+        onGoing.innerHTML = `You are now in editing mode. All changes will be saved automatically`;
         // For each card
         cards.forEach((card) => {
           let start = (card.start[0] - 6) * 60 + card.start[1];
