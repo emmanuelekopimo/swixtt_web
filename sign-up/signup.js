@@ -80,10 +80,9 @@ const signUp = () => {
           // Email verification sent!
           console.log("Verification email sent");
           // Finally redirect user to verify
-          // location.href = "./../email-verify";
+          location.href = "./../email-verify";
         });
       });
-      // Send email verification
     })
     .catch((error) => {
       const errorCode = error.code;
