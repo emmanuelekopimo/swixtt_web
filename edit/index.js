@@ -191,8 +191,7 @@ const updateInfo = () => {
         } else {
           daysSat.classList.toggle("hide", true);
         }
-        `No lecture going on now. Read your books in anticipation for the next lectures`;
-        onGoing.innerHTML = `No lecture going on now. Read your books in anticipation for the next lectures`;
+        onGoing.innerHTML = `You are now in editing mode. All changes will be saved immediately`;
         // For each card
         cards.forEach((card) => {
           let start = (card.start[0] - 6) * 60 + card.start[1];

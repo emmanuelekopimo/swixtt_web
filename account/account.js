@@ -75,12 +75,16 @@ const loadPage = async (user) => {
                       ${getTwoLettersFromName(ttData.name)}
                   </div>
               </div>
-              <div class="tt-name">Computer Science</div>
-              <div class="tt-date">University of Port Harcourt</div>
+              <div class="tt-name">${ttData.name}</div>
+              <div class="tt-date">${ttData.school}</div>
           </div>
           <div class="tt-ops">
-              <button title="Edit" class="op-button">Edit</button>
-              <button title="View" class="op-button">View</button>
+              <button title="Edit" class="op-button" onclick="location.href='./../edit/?t=${
+                ttData.id
+              }'">Edit</button>
+              <button title="View" class="op-button" onclick="location.href='./../view/?t=${
+                ttData.id
+              }'">View</button>
               <button title="Share" class="op-button">Share</button>
               <button title="Delete" class="op-button">Delete</button>
           </div>
