@@ -9,6 +9,7 @@ import {
   doc,
   getDoc,
 } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+import { getTwoLettersFromName } from "./../functions.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBu5o6QgRZWtG7CPsREmTJ7YNf0lD0gg7A",
@@ -61,28 +62,34 @@ const loadPage = async (user) => {
     verifiedLogo.classList.toggle("hide", false);
   }
   let timeTables = userData.timetables;
+  timeTables.forEach(async (timeTableId) => {
+    let ttRef = doc(db, "timetables", timeTableId);
+    let ttObject = await getDoc(ttRef);
+    let ttData = ttObject.data();
 
-  let timeTableCardTemplate = `<div class="tt-card">
-        <div class="tt-i">
-            <div class="tt-icon">
+    let timeTableCardTemplate = `<div class="tt-card">
+          <div class="tt-i">
+              <div class="tt-icon">
 
-                <div class="tt-icon-i">
-                    CS
-                </div>
-            </div>
-            <div class="tt-name">Computer Science</div>
-            <div class="tt-date">University of Port Harcourt</div>
-        </div>
-        <div class="tt-ops">
-            <button title="Edit" class="op-button">Edit</button>
-            <button title="View" class="op-button">View</button>
-            <button title="Share" class="op-button">Share</button>
-            <button title="Delete" class="op-button">Delete</button>
-        </div>
-      </div>`;
-  let element = document.createElement("div");
-  element.innerHTML = timeTableCardTemplate;
-  timeTableList.append(element);
+                  <div class="tt-icon-i">
+                      ${getTwoLettersFromName(ttData.name)}
+                  </div>
+              </div>
+              <div class="tt-name">Computer Science</div>
+              <div class="tt-date">University of Port Harcourt</div>
+          </div>
+          <div class="tt-ops">
+              <button title="Edit" class="op-button">Edit</button>
+              <button title="View" class="op-button">View</button>
+              <button title="Share" class="op-button">Share</button>
+              <button title="Delete" class="op-button">Delete</button>
+          </div>
+        </div>`;
+    let element = document.createElement("div");
+    element.innerHTML = timeTableCardTemplate;
+    timeTableList.append(element);
+  });
+
   // Remove wait screen
   waitScreen.classList.toggle("hide", true);
 };
